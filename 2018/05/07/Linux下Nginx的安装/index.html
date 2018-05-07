@@ -3,18 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>貓熊的博客</title>
+  <title>Linux下Nginx的安装 | 貓熊的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原谅我这一生不羁放纵爱自由~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="貓熊的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="简介Nginx是一个高性能的HTTP和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进行服务。 N">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux下Nginx的安装">
+<meta property="og:url" content="http://yoursite.com/2018/05/07/Linux下Nginx的安装/index.html">
 <meta property="og:site_name" content="貓熊的博客">
-<meta property="og:description" content="原谅我这一生不羁放纵爱自由~">
+<meta property="og:description" content="简介Nginx是一个高性能的HTTP和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进行服务。 N">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/mVVuvjC.png">
+<meta property="og:updated_time" content="2018-05-07T06:40:12.932Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="貓熊的博客">
-<meta name="twitter:description" content="原谅我这一生不羁放纵爱自由~">
+<meta name="twitter:title" content="Linux下Nginx的安装">
+<meta name="twitter:description" content="简介Nginx是一个高性能的HTTP和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进行服务。 N">
+<meta name="twitter:image" content="https://i.imgur.com/mVVuvjC.png">
   
     <link rel="alternate" href="/atom.xml" title="貓熊的博客" type="application/atom+xml">
   
@@ -67,9 +70,7 @@
   </div>
 </div>
 
-        <section id="main">
-  
-    <article id="post-Linux下Nginx的安装" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Linux下Nginx的安装" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/07/Linux下Nginx的安装/" class="article-date">
   <time class="post-time" datetime="2018-05-07T06:40:12.805Z" itemprop="datePublished">
@@ -85,8 +86,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/07/Linux下Nginx的安装/">Linux下Nginx的安装</a>
+    <h1 class="article-title" itemprop="name">
+      Linux下Nginx的安装
     </h1>
   
 
@@ -128,72 +129,21 @@
     </footer>
   </div>
   
-</article>
-
-
-
-
-  
-    <article id="post-这是我的第一篇Markdown博客" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/07/这是我的第一篇Markdown博客/" class="article-date">
-  <time class="post-time" datetime="2018-05-07T03:04:10.485Z" itemprop="datePublished">
-    <span class="post-month">5月</span><br/>
-    <span class="post-day">07</span>
-  </time>
-</a>
-   
-  </div>
-  <div class="article-inner">
     
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/07/这是我的第一篇Markdown博客/">这是我的第一篇Markdown博客</a>
-    </h1>
   
+    <a href="/2018/05/07/这是我的第一篇Markdown博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">这是我的第一篇Markdown博客</div>
+    </a>
+  
+</nav>
 
-        <div>
-          
-          
-              
-
-          
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>你看的这个页面是我用<strong>Github</strong>+<strong>Hexo</strong>搭建的个人博客，然后配置了<strong>Hexo</strong>的Shana主题，博客通过MarkdownPad2编写。</p>
-<p>主要的操作步骤如下：  </p>
-<ol>
-<li>搭建环境准备（包括node.js和Git环境，GitHub账户的配置）  </li>
-<li>安装、配置Hexo  </li>
-<li>配置Hexo  </li>
-<li>关联Hexo与Github page  </li>
-<li>主题配置  </li>
-<li>发布文章  </li>
-<li>添加404公益页面  </li>
-</ol>
-<p>这是挖的坑，填不填再说吧~</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/07/这是我的第一篇Markdown博客/" data-id="cjgvvsypa00019geljm7nmrg3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
 
 
-
-
-  
 
 </section>
         
