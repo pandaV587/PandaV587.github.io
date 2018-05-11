@@ -102,23 +102,28 @@
 
 
 
-  <meta name="description" content="原谅我这一生不羁放纵爱自由~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="貓熊的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="简介 Nginx 是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下 Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。 Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进">
+<meta name="keywords" content="Nginx,部署">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux系统Nginx的安装">
+<meta property="og:url" content="http://yoursite.com/2018/05/07/Linux系统Nginx的安装/index.html">
 <meta property="og:site_name" content="貓熊的博客">
-<meta property="og:description" content="原谅我这一生不羁放纵爱自由~">
+<meta property="og:description" content="简介 Nginx 是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下 Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。 Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/TwcTxut.jpg">
+<meta property="og:image" content="https://i.imgur.com/mVVuvjC.png">
+<meta property="og:updated_time" content="2018-05-11T02:01:15.782Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="貓熊的博客">
-<meta name="twitter:description" content="原谅我这一生不羁放纵爱自由~">
+<meta name="twitter:title" content="Linux系统Nginx的安装">
+<meta name="twitter:description" content="简介 Nginx 是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下 Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。 Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进">
+<meta name="twitter:image" content="https://i.imgur.com/TwcTxut.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/07/Linux系统Nginx的安装/"/>
 
 
 
@@ -128,7 +133,7 @@
   };
 </script>
 
-  <title>貓熊的博客</title>
+  <title>Linux系统Nginx的安装 | 貓熊的博客</title>
   
 
 
@@ -175,8 +180,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     
     <a href="https://github.com/pandaV587"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
@@ -218,7 +222,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
   </li>
@@ -286,397 +290,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/数据库exp无法导出空表的解决方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="貓熊">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="貓熊的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/11/数据库exp无法导出空表的解决方法/" itemprop="url">
-                  数据库exp无法导出空表的解决方法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-11 10:15:05 / 修改时间：10:16:28" itemprop="dateCreated datePublished" datetime="2018-05-11T10:15:05+08:00">2018-05-11</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/环境部署/" itemprop="url" rel="index"><span itemprop="name">环境部署</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">255</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题描述：<br>某次数据库执行exp命令导出过程中，报EXP-00011错误，对应的表不存在，经过检查发现这些表的数据均为空，都是空表。<br><img src="https://i.imgur.com/biHWMWP.png" alt=""></p>
-<p>原因：<br>Oracle 11g默认创建一个表时不分配segment，只有在插入数据时才会产生（当然也可以强制分配），以节省磁盘空间。</p>
-<p>解决方法：<br>①查询空表；<br>select ‘alter table ‘||table_name||’ allocate extent;’ from user_tables where num_rows=0;<br>②执行查询结果的语句，给空表分配segment</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/Linux系统xml文件乱码解决方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="貓熊">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="貓熊的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/11/Linux系统xml文件乱码解决方法/" itemprop="url">
-                  Linux系统xml文件乱码
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-11 09:59:48 / 修改时间：10:00:02" itemprop="dateCreated datePublished" datetime="2018-05-11T09:59:48+08:00">2018-05-11</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/环境部署/" itemprop="url" rel="index"><span itemprop="name">环境部署</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">500</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>由于终端工具不同，个别情况下，尤其是xml文件，如果是dos格式，测试环境会报错，此时需要修改文件格式。dos文件表现形式为：每一行的行尾会有^M符号<br>查看文件格式的两种方法：<br>1）、file命令</p>
-<p><pre>[root@i-C8803F6C test]# file context.xml<br>context.xml: XML  document text</pre></p>
-<p><pre>[root@i-C8803F6C test]# file fdfs_client.conf<br>fdfs_client.conf: UTF-8 Unicode (with BOM) text</pre><br>2）、vim打开文件，命令模式下输入：  </p>
-<p><pre>:set ff?</pre><br> 返回fileformat=dos或者fileformat=unix  </p>
-<p>转换文件格式的两种方法：<br>1）、直接使用转换命令：<br>dos格式转换为unix格式：dos2unix 文件名<br>unix格式转换为dos格式：unix2dos 文件名<br>2）、vim打开文件，命令模式下输入：</p>
-<p><pre>:set fileformat=unix</pre>（简写为set ff=unix）<br>或者:</p>
-<p><pre>set fileformat=dos</pre>（简写为set ff=dos）</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -708,11 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/07/Linux系统Nginx的安装/" itemprop="url">
-                  Linux系统Nginx的安装
-                </a>
+          <h1 class="post-title" itemprop="name headline">Linux系统Nginx的安装
               
             
           </h1>
@@ -833,9 +445,7 @@
       
 
       
-        
-          
-            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p> Nginx 是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下 Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。<br> Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进行服务。 Nginx 采用 C 进行编写，不论是系统资源开销还是 CPU 使用效率都比 Perlbal 要好很多。<br> Nginx 同时也是一个非常优秀的邮件代理服务器，最早开发这个产品的目的之一也是作为邮件代理服务器。 Nginx 是一个安装非常简单，配置文件非常简洁（还能够支持perl语法）， bug 非常少的服务器， 启动特别容易，并且几乎可以做到 7*24 不间断运行，即使运行数个月也不需要重新启动。 你还能够在不间断服务的情况下进行软件版本的升级。</p>
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p> Nginx 是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下 Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。<br> Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进行服务。 Nginx 采用 C 进行编写，不论是系统资源开销还是 CPU 使用效率都比 Perlbal 要好很多。<br> Nginx 同时也是一个非常优秀的邮件代理服务器，最早开发这个产品的目的之一也是作为邮件代理服务器。 Nginx 是一个安装非常简单，配置文件非常简洁（还能够支持perl语法）， bug 非常少的服务器， 启动特别容易，并且几乎可以做到 7*24 不间断运行，即使运行数个月也不需要重新启动。 你还能够在不间断服务的情况下进行软件版本的升级。</p>
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>Nginx需要依赖下面3个包：  </p>
 <ol>
 <li>gzip模块需要zlib库  </li>
@@ -887,8 +497,6 @@
 
 <p>在浏览器中输入：<a href="http://ip" target="_blank" rel="noopener">http://ip</a> 出现如下页面说明启动成功<br><img src="https://i.imgur.com/mVVuvjC.png" alt=""></p>
 
-          
-        
       
     </div>
 
@@ -906,228 +514,52 @@
 
     <div>
       
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/07/Linux系统jdk版本替换/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="貓熊">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="貓熊的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/07/Linux系统jdk版本替换/" itemprop="url">
-                  Linux系统jdk版本替换
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-07 11:04:10" itemprop="dateCreated datePublished" datetime="2018-05-07T11:04:10+08:00">2018-05-07</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-05-11 09:41:55" itemprop="dateModified" datetime="2018-05-11T09:41:55+08:00">2018-05-11</time>
-              
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/环境部署/" itemprop="url" rel="index"><span itemprop="name">环境部署</span></a></span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/Nginx/" rel="tag"># Nginx</a>
           
-
+            <a href="/tags/部署/" rel="tag"># 部署</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">572</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1-全局替换"><a href="#1-全局替换" class="headerlink" title="1. 全局替换"></a>1. 全局替换</h1><p>root用户下，修改全局变量直接参考以下方法：<br><a href="https://zhidao.baidu.com/question/16233157.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/16233157.html</a></p>
-<h1 id="2-局部替换"><a href="#2-局部替换" class="headerlink" title="2. 局部替换"></a>2. 局部替换</h1><p>当同一服务器有多个用户，需要不同的JDK版本时，需要修改局部变量（只对当前登录的用户生效）<br>1）、安装对应的JDK版本；<br>2）、修改局部变量配置文件：</p>
-<p><pre>vim .bash_profile</pre><br>添加以下内容：</p>
-<p><pre>export JAVA_HOME=/usr/java/jdk1.7.0_80<br>PATH=$PATH:$HOME/bin:${JAVA_HOME}/bin<br>export PATH</pre><br>3）、使配置文件生效：</p>
-<p><pre>source .bash_profile</pre><br>4）、查看JDK版本：</p>
-<p><pre>java -version</pre><br>若跟配置的版本一致，则替换正确；<br>若跟配置的版本不一致，则再次修改局部变量配置文件：</p>
-<p><pre>vim .bash_profile</pre><br>PATH使用绝对路径：</p>
-<p><pre>PATH=/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/jzfw/bin:/usr/java/jdk1.7.0_80/bin:/home/jzfw/bin</pre></p>
-<p><pre>source .bash_profile</pre><br>再次查看JDK版本</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/07/Linux系统jdk版本替换/" rel="next" title="Linux系统jdk版本替换">
+                <i class="fa fa-chevron-left"></i> Linux系统jdk版本替换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/11/Linux系统xml文件乱码解决方法/" rel="prev" title="Linux系统xml文件乱码">
+                Linux系统xml文件乱码 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -1137,14 +569,19 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -1165,8 +602,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1271,6 +717,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-下载依赖包"><span class="nav-number">2.1.</span> <span class="nav-text">1. 下载依赖包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装依赖包"><span class="nav-number">2.2.</span> <span class="nav-text">2. 安装依赖包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-检测是否安装成功"><span class="nav-number">2.3.</span> <span class="nav-text">3. 检测是否安装成功</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-启动关闭"><span class="nav-number">2.4.</span> <span class="nav-text">4. 启动关闭</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1443,6 +905,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
 
   
 
