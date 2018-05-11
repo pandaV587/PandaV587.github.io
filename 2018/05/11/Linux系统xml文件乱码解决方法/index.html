@@ -102,18 +102,18 @@
 
 
 
-  <meta name="description" content="由于终端工具不同，个别情况下，尤其是xml文件，如果是dos格式，测试环境会报错，此时需要修改文件格式。dos文件表现形式为：每一行的行尾会有^M符号查看文件格式的两种方法：1）、file命令 [root@i-C8803F6C test]# file context.xmlcontext.xml: XML  document text [root@i-C8803F6C test]# file fd">
+  <meta name="description" content="由于终端工具不同，xml文件经过多次编辑之后，文件格式可能发生改变。如果是dos格式，环境启动过程中会报错，此时需要修改文件格式，dos文件表现形式为每一行的行尾会有^M符号。">
 <meta name="keywords" content="Linux,xml,乱码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux系统xml文件乱码">
 <meta property="og:url" content="http://yoursite.com/2018/05/11/Linux系统xml文件乱码解决方法/index.html">
 <meta property="og:site_name" content="貓熊的博客">
-<meta property="og:description" content="由于终端工具不同，个别情况下，尤其是xml文件，如果是dos格式，测试环境会报错，此时需要修改文件格式。dos文件表现形式为：每一行的行尾会有^M符号查看文件格式的两种方法：1）、file命令 [root@i-C8803F6C test]# file context.xmlcontext.xml: XML  document text [root@i-C8803F6C test]# file fd">
+<meta property="og:description" content="由于终端工具不同，xml文件经过多次编辑之后，文件格式可能发生改变。如果是dos格式，环境启动过程中会报错，此时需要修改文件格式，dos文件表现形式为每一行的行尾会有^M符号。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-11T02:00:02.846Z">
+<meta property="og:updated_time" content="2018-05-11T07:14:52.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux系统xml文件乱码">
-<meta name="twitter:description" content="由于终端工具不同，个别情况下，尤其是xml文件，如果是dos格式，测试环境会报错，此时需要修改文件格式。dos文件表现形式为：每一行的行尾会有^M符号查看文件格式的两种方法：1）、file命令 [root@i-C8803F6C test]# file context.xmlcontext.xml: XML  document text [root@i-C8803F6C test]# file fd">
+<meta name="twitter:description" content="由于终端工具不同，xml文件经过多次编辑之后，文件格式可能发生改变。如果是dos格式，环境启动过程中会报错，此时需要修改文件格式，dos文件表现形式为每一行的行尾会有^M符号。">
 
 
 
@@ -346,7 +346,7 @@
                 
               
 
-              <time title="创建时间：2018-05-11 09:59:48 / 修改时间：10:00:02" itemprop="dateCreated datePublished" datetime="2018-05-11T09:59:48+08:00">2018-05-11</time>
+              <time title="创建时间：2018-05-11 09:59:48 / 修改时间：15:14:52" itemprop="dateCreated datePublished" datetime="2018-05-11T09:59:48+08:00">2018-05-11</time>
             
 
             
@@ -396,7 +396,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">500</span>
+                <span title="本文字数">515</span>
               
 
               
@@ -430,7 +430,9 @@
       
 
       
-        <p>由于终端工具不同，个别情况下，尤其是xml文件，如果是dos格式，测试环境会报错，此时需要修改文件格式。dos文件表现形式为：每一行的行尾会有^M符号<br>查看文件格式的两种方法：<br>1）、file命令</p>
+        <p>由于终端工具不同，xml文件经过多次编辑之后，文件格式可能发生改变。如果是dos格式，环境启动过程中会报错，此时需要修改文件格式，dos文件表现形式为每一行的行尾会有^M符号。</p>
+<a id="more"></a>
+<p>查看文件格式的两种方法：<br>1）、file命令</p>
 <p><pre>[root@i-C8803F6C test]# file context.xml<br>context.xml: XML  document text</pre></p>
 <p><pre>[root@i-C8803F6C test]# file fdfs_client.conf<br>fdfs_client.conf: UTF-8 Unicode (with BOM) text</pre><br>2）、vim打开文件，命令模式下输入：  </p>
 <p><pre>:set ff?</pre><br> 返回fileformat=dos或者fileformat=unix  </p>
@@ -716,7 +718,7 @@
 
 <!-- <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.2k字</span>
+  <span class="post-count">博客全站共1.4k字</span>
 </div> -->
         
 

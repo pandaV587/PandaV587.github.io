@@ -102,19 +102,19 @@
 
 
 
-  <meta name="description" content="问题描述：某次数据库执行exp命令导出过程中，报EXP-00011错误，对应的表不存在，经过检查发现这些表的数据均为空，都是空表。 原因：Oracle 11g默认创建一个表时不分配segment，只有在插入数据时才会产生（当然也可以强制分配），以节省磁盘空间。 解决方法：①查询空表；select ‘alter table ‘||table_name||’ allocate extent;’ fro">
+  <meta name="description" content="某次数据库执行exp命令导出过程中，报EXP-00011错误，对应的表不存在，经过检查发现这些表的数据均为空，如果需要导出这些表，必须先对空表进行处理。">
 <meta name="keywords" content="数据库,导出,exp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据库exp无法导出空表的解决方法">
 <meta property="og:url" content="http://yoursite.com/2018/05/11/数据库exp无法导出空表的解决方法/index.html">
 <meta property="og:site_name" content="貓熊的博客">
-<meta property="og:description" content="问题描述：某次数据库执行exp命令导出过程中，报EXP-00011错误，对应的表不存在，经过检查发现这些表的数据均为空，都是空表。 原因：Oracle 11g默认创建一个表时不分配segment，只有在插入数据时才会产生（当然也可以强制分配），以节省磁盘空间。 解决方法：①查询空表；select ‘alter table ‘||table_name||’ allocate extent;’ fro">
+<meta property="og:description" content="某次数据库执行exp命令导出过程中，报EXP-00011错误，对应的表不存在，经过检查发现这些表的数据均为空，如果需要导出这些表，必须先对空表进行处理。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.imgur.com/biHWMWP.png">
-<meta property="og:updated_time" content="2018-05-11T02:16:28.541Z">
+<meta property="og:updated_time" content="2018-05-11T07:17:20.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据库exp无法导出空表的解决方法">
-<meta name="twitter:description" content="问题描述：某次数据库执行exp命令导出过程中，报EXP-00011错误，对应的表不存在，经过检查发现这些表的数据均为空，都是空表。 原因：Oracle 11g默认创建一个表时不分配segment，只有在插入数据时才会产生（当然也可以强制分配），以节省磁盘空间。 解决方法：①查询空表；select ‘alter table ‘||table_name||’ allocate extent;’ fro">
+<meta name="twitter:description" content="某次数据库执行exp命令导出过程中，报EXP-00011错误，对应的表不存在，经过检查发现这些表的数据均为空，如果需要导出这些表，必须先对空表进行处理。">
 <meta name="twitter:image" content="https://i.imgur.com/biHWMWP.png">
 
 
@@ -348,7 +348,7 @@
                 
               
 
-              <time title="创建时间：2018-05-11 10:15:05 / 修改时间：10:16:28" itemprop="dateCreated datePublished" datetime="2018-05-11T10:15:05+08:00">2018-05-11</time>
+              <time title="创建时间：2018-05-11 10:15:05 / 修改时间：15:17:20" itemprop="dateCreated datePublished" datetime="2018-05-11T10:15:05+08:00">2018-05-11</time>
             
 
             
@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">255</span>
+                <span title="本文字数">270</span>
               
 
               
@@ -432,8 +432,10 @@
       
 
       
-        <p>问题描述：<br>某次数据库执行exp命令导出过程中，报EXP-00011错误，对应的表不存在，经过检查发现这些表的数据均为空，都是空表。<br><img src="https://i.imgur.com/biHWMWP.png" alt=""></p>
-<p>原因：<br>Oracle 11g默认创建一个表时不分配segment，只有在插入数据时才会产生（当然也可以强制分配），以节省磁盘空间。</p>
+        <p>某次数据库执行exp命令导出过程中，报EXP-00011错误，对应的表不存在，经过检查发现这些表的数据均为空，如果需要导出这些表，必须先对空表进行处理。</p>
+<a id="more"></a>
+<p><img src="https://i.imgur.com/biHWMWP.png" alt=""></p>
+<p>原因分析：<br>Oracle 11g默认创建一个表时不分配segment，只有在插入数据时才会产生（当然也可以强制分配），以节省磁盘空间。</p>
 <p>解决方法：<br>①查询空表；<br>select ‘alter table ‘||table_name||’ allocate extent;’ from user_tables where num_rows=0;<br>②执行查询结果的语句，给空表分配segment</p>
 
       
@@ -710,7 +712,7 @@
 
 <!-- <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.2k字</span>
+  <span class="post-count">博客全站共1.4k字</span>
 </div> -->
         
 
