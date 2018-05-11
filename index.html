@@ -303,6 +303,1206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/Linux系统Nginx的安装 - 副本 (5)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="貓熊">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="貓熊的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/Linux系统Nginx的安装 - 副本 (5)/" itemprop="url">
+                  Linux系统Nginx的安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-11 10:45:26 / 修改时间：10:01:15" itemprop="dateCreated datePublished" datetime="2018-05-11T10:45:26+08:00">2018-05-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/环境部署/" itemprop="url" rel="index"><span itemprop="name">环境部署</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p> Nginx 是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下 Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。<br> Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进行服务。 Nginx 采用 C 进行编写，不论是系统资源开销还是 CPU 使用效率都比 Perlbal 要好很多。<br> Nginx 同时也是一个非常优秀的邮件代理服务器，最早开发这个产品的目的之一也是作为邮件代理服务器。 Nginx 是一个安装非常简单，配置文件非常简洁（还能够支持perl语法）， bug 非常少的服务器， 启动特别容易，并且几乎可以做到 7*24 不间断运行，即使运行数个月也不需要重新启动。 你还能够在不间断服务的情况下进行软件版本的升级。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>Nginx需要依赖下面3个包：  </p>
+<ol>
+<li>gzip模块需要zlib库  </li>
+<li>rewrite模块需要pcre库  </li>
+<li>ssl功能需要openssl库<br>依赖包安装顺序依次为：openssl、zlib、pcre，最后安装Nginx包。</li>
+</ol>
+<h2 id="1-下载依赖包"><a href="#1-下载依赖包" class="headerlink" title="1. 下载依赖包"></a>1. 下载依赖包</h2><p>openssl-fips-2.0.2.tar.gz<br>zlib-1.2.7.tar.gz<br>pcre-8.21.tar.gz<br>nginx-1.2.6.tar.gz  </p>
+<h2 id="2-安装依赖包"><a href="#2-安装依赖包" class="headerlink" title="2. 安装依赖包"></a>2. 安装依赖包</h2><p>①. 安装openssl  </p>
+<pre>[root@localhost mrms]# tar -zxvf openssl-fips-2.0.2.tar.gz
+[root@localhost mrms]# cd openssl-fips-2.0.2
+[root@localhost openssl-fips-2.0.2]# ./config
+[root@localhost openssl-fips-2.0.2]# make
+[root@localhost openssl-fips-2.0.2]# make install  </pre>
+
+<p>②.安装zlib</p>
+<pre>[root@localhost mrms]# tar -zxvf zlib-1.2.7.tar.gz  
+[root@localhost mrms]# cd zlib-1.2.7  
+[root@localhost zlib-1.2.7]# ./configure  
+[root@localhost zlib-1.2.7]# make  
+[root@localhost zlib-1.2.7]# make install</pre>
+
+<p>③.安装pcre      </p>
+<pre>[root@localhost mrms]# tar -zxvf pcre-8.21.tar.gz  
+[root@localhost mrms]# cd pcre-8.21  
+[root@localhost pcre-8.21]# ./configure  
+[root@localhost pcre-8.21]# make  
+[root@localhost pcre-8.21]# make install</pre> 
+
+<p> ④.安装nginx    </p>
+<pre>[root@localhost mrms]# tar -zxvf nginx-1.2.6.tar.gz  
+[root@localhost mrms]# cd nginx-1.2.6  
+[root@localhost nginx-1.2.6]# ./configure --prefix=/iflytek/nginx --with-pcre=../pcre-8.21 --with-zlib=../zlib-1.2.7 --with-openssl=../openssl-fips-2.0.2  
+[root@localhost nginx-1.2.6]# make  
+[root@localhost nginx-1.2.6]# make install</pre> 
+
+<p>至此Nginx的安装完成！</p>
+<h2 id="3-检测是否安装成功"><a href="#3-检测是否安装成功" class="headerlink" title="3. 检测是否安装成功"></a>3. 检测是否安装成功</h2><pre>[root@localhost nginx-1.2.6]# cd /usr/local/nginx/sbin  
+[root@localhost sbin]# ./nginx –t</pre>
+
+<p>出现如下所示提示，表示安装成功：</p>
+<p><img src="https://i.imgur.com/TwcTxut.jpg" alt=""></p>
+<h2 id="4-启动关闭"><a href="#4-启动关闭" class="headerlink" title="4. 启动关闭"></a>4. 启动关闭</h2><p>启动：    </p>
+<pre>./sbin/nginx -c conf/nginx.conf</pre>   
+关闭：    
+<pre>./sbin/nginx -s stop</pre>  
+重置：    
+当你有修改配置文件的时候，只需要reload一下即可    
+<pre>./sbin/nginx -s reload</pre>
+
+<p>在浏览器中输入：<a href="http://ip" target="_blank" rel="noopener">http://ip</a> 出现如下页面说明启动成功<br><img src="https://i.imgur.com/mVVuvjC.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/Linux系统Nginx的安装 - 副本 (4)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="貓熊">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="貓熊的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/Linux系统Nginx的安装 - 副本 (4)/" itemprop="url">
+                  Linux系统Nginx的安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-11 10:45:25 / 修改时间：10:01:15" itemprop="dateCreated datePublished" datetime="2018-05-11T10:45:25+08:00">2018-05-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/环境部署/" itemprop="url" rel="index"><span itemprop="name">环境部署</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p> Nginx 是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下 Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。<br> Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进行服务。 Nginx 采用 C 进行编写，不论是系统资源开销还是 CPU 使用效率都比 Perlbal 要好很多。<br> Nginx 同时也是一个非常优秀的邮件代理服务器，最早开发这个产品的目的之一也是作为邮件代理服务器。 Nginx 是一个安装非常简单，配置文件非常简洁（还能够支持perl语法）， bug 非常少的服务器， 启动特别容易，并且几乎可以做到 7*24 不间断运行，即使运行数个月也不需要重新启动。 你还能够在不间断服务的情况下进行软件版本的升级。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>Nginx需要依赖下面3个包：  </p>
+<ol>
+<li>gzip模块需要zlib库  </li>
+<li>rewrite模块需要pcre库  </li>
+<li>ssl功能需要openssl库<br>依赖包安装顺序依次为：openssl、zlib、pcre，最后安装Nginx包。</li>
+</ol>
+<h2 id="1-下载依赖包"><a href="#1-下载依赖包" class="headerlink" title="1. 下载依赖包"></a>1. 下载依赖包</h2><p>openssl-fips-2.0.2.tar.gz<br>zlib-1.2.7.tar.gz<br>pcre-8.21.tar.gz<br>nginx-1.2.6.tar.gz  </p>
+<h2 id="2-安装依赖包"><a href="#2-安装依赖包" class="headerlink" title="2. 安装依赖包"></a>2. 安装依赖包</h2><p>①. 安装openssl  </p>
+<pre>[root@localhost mrms]# tar -zxvf openssl-fips-2.0.2.tar.gz
+[root@localhost mrms]# cd openssl-fips-2.0.2
+[root@localhost openssl-fips-2.0.2]# ./config
+[root@localhost openssl-fips-2.0.2]# make
+[root@localhost openssl-fips-2.0.2]# make install  </pre>
+
+<p>②.安装zlib</p>
+<pre>[root@localhost mrms]# tar -zxvf zlib-1.2.7.tar.gz  
+[root@localhost mrms]# cd zlib-1.2.7  
+[root@localhost zlib-1.2.7]# ./configure  
+[root@localhost zlib-1.2.7]# make  
+[root@localhost zlib-1.2.7]# make install</pre>
+
+<p>③.安装pcre      </p>
+<pre>[root@localhost mrms]# tar -zxvf pcre-8.21.tar.gz  
+[root@localhost mrms]# cd pcre-8.21  
+[root@localhost pcre-8.21]# ./configure  
+[root@localhost pcre-8.21]# make  
+[root@localhost pcre-8.21]# make install</pre> 
+
+<p> ④.安装nginx    </p>
+<pre>[root@localhost mrms]# tar -zxvf nginx-1.2.6.tar.gz  
+[root@localhost mrms]# cd nginx-1.2.6  
+[root@localhost nginx-1.2.6]# ./configure --prefix=/iflytek/nginx --with-pcre=../pcre-8.21 --with-zlib=../zlib-1.2.7 --with-openssl=../openssl-fips-2.0.2  
+[root@localhost nginx-1.2.6]# make  
+[root@localhost nginx-1.2.6]# make install</pre> 
+
+<p>至此Nginx的安装完成！</p>
+<h2 id="3-检测是否安装成功"><a href="#3-检测是否安装成功" class="headerlink" title="3. 检测是否安装成功"></a>3. 检测是否安装成功</h2><pre>[root@localhost nginx-1.2.6]# cd /usr/local/nginx/sbin  
+[root@localhost sbin]# ./nginx –t</pre>
+
+<p>出现如下所示提示，表示安装成功：</p>
+<p><img src="https://i.imgur.com/TwcTxut.jpg" alt=""></p>
+<h2 id="4-启动关闭"><a href="#4-启动关闭" class="headerlink" title="4. 启动关闭"></a>4. 启动关闭</h2><p>启动：    </p>
+<pre>./sbin/nginx -c conf/nginx.conf</pre>   
+关闭：    
+<pre>./sbin/nginx -s stop</pre>  
+重置：    
+当你有修改配置文件的时候，只需要reload一下即可    
+<pre>./sbin/nginx -s reload</pre>
+
+<p>在浏览器中输入：<a href="http://ip" target="_blank" rel="noopener">http://ip</a> 出现如下页面说明启动成功<br><img src="https://i.imgur.com/mVVuvjC.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/Linux系统Nginx的安装 - 副本 (3)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="貓熊">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="貓熊的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/Linux系统Nginx的安装 - 副本 (3)/" itemprop="url">
+                  Linux系统Nginx的安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-11 10:45:25 / 修改时间：10:01:15" itemprop="dateCreated datePublished" datetime="2018-05-11T10:45:25+08:00">2018-05-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/环境部署/" itemprop="url" rel="index"><span itemprop="name">环境部署</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p> Nginx 是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下 Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。<br> Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进行服务。 Nginx 采用 C 进行编写，不论是系统资源开销还是 CPU 使用效率都比 Perlbal 要好很多。<br> Nginx 同时也是一个非常优秀的邮件代理服务器，最早开发这个产品的目的之一也是作为邮件代理服务器。 Nginx 是一个安装非常简单，配置文件非常简洁（还能够支持perl语法）， bug 非常少的服务器， 启动特别容易，并且几乎可以做到 7*24 不间断运行，即使运行数个月也不需要重新启动。 你还能够在不间断服务的情况下进行软件版本的升级。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>Nginx需要依赖下面3个包：  </p>
+<ol>
+<li>gzip模块需要zlib库  </li>
+<li>rewrite模块需要pcre库  </li>
+<li>ssl功能需要openssl库<br>依赖包安装顺序依次为：openssl、zlib、pcre，最后安装Nginx包。</li>
+</ol>
+<h2 id="1-下载依赖包"><a href="#1-下载依赖包" class="headerlink" title="1. 下载依赖包"></a>1. 下载依赖包</h2><p>openssl-fips-2.0.2.tar.gz<br>zlib-1.2.7.tar.gz<br>pcre-8.21.tar.gz<br>nginx-1.2.6.tar.gz  </p>
+<h2 id="2-安装依赖包"><a href="#2-安装依赖包" class="headerlink" title="2. 安装依赖包"></a>2. 安装依赖包</h2><p>①. 安装openssl  </p>
+<pre>[root@localhost mrms]# tar -zxvf openssl-fips-2.0.2.tar.gz
+[root@localhost mrms]# cd openssl-fips-2.0.2
+[root@localhost openssl-fips-2.0.2]# ./config
+[root@localhost openssl-fips-2.0.2]# make
+[root@localhost openssl-fips-2.0.2]# make install  </pre>
+
+<p>②.安装zlib</p>
+<pre>[root@localhost mrms]# tar -zxvf zlib-1.2.7.tar.gz  
+[root@localhost mrms]# cd zlib-1.2.7  
+[root@localhost zlib-1.2.7]# ./configure  
+[root@localhost zlib-1.2.7]# make  
+[root@localhost zlib-1.2.7]# make install</pre>
+
+<p>③.安装pcre      </p>
+<pre>[root@localhost mrms]# tar -zxvf pcre-8.21.tar.gz  
+[root@localhost mrms]# cd pcre-8.21  
+[root@localhost pcre-8.21]# ./configure  
+[root@localhost pcre-8.21]# make  
+[root@localhost pcre-8.21]# make install</pre> 
+
+<p> ④.安装nginx    </p>
+<pre>[root@localhost mrms]# tar -zxvf nginx-1.2.6.tar.gz  
+[root@localhost mrms]# cd nginx-1.2.6  
+[root@localhost nginx-1.2.6]# ./configure --prefix=/iflytek/nginx --with-pcre=../pcre-8.21 --with-zlib=../zlib-1.2.7 --with-openssl=../openssl-fips-2.0.2  
+[root@localhost nginx-1.2.6]# make  
+[root@localhost nginx-1.2.6]# make install</pre> 
+
+<p>至此Nginx的安装完成！</p>
+<h2 id="3-检测是否安装成功"><a href="#3-检测是否安装成功" class="headerlink" title="3. 检测是否安装成功"></a>3. 检测是否安装成功</h2><pre>[root@localhost nginx-1.2.6]# cd /usr/local/nginx/sbin  
+[root@localhost sbin]# ./nginx –t</pre>
+
+<p>出现如下所示提示，表示安装成功：</p>
+<p><img src="https://i.imgur.com/TwcTxut.jpg" alt=""></p>
+<h2 id="4-启动关闭"><a href="#4-启动关闭" class="headerlink" title="4. 启动关闭"></a>4. 启动关闭</h2><p>启动：    </p>
+<pre>./sbin/nginx -c conf/nginx.conf</pre>   
+关闭：    
+<pre>./sbin/nginx -s stop</pre>  
+重置：    
+当你有修改配置文件的时候，只需要reload一下即可    
+<pre>./sbin/nginx -s reload</pre>
+
+<p>在浏览器中输入：<a href="http://ip" target="_blank" rel="noopener">http://ip</a> 出现如下页面说明启动成功<br><img src="https://i.imgur.com/mVVuvjC.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/Linux系统Nginx的安装 - 副本 (2)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="貓熊">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="貓熊的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/Linux系统Nginx的安装 - 副本 (2)/" itemprop="url">
+                  Linux系统Nginx的安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-11 10:45:24 / 修改时间：10:01:15" itemprop="dateCreated datePublished" datetime="2018-05-11T10:45:24+08:00">2018-05-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/环境部署/" itemprop="url" rel="index"><span itemprop="name">环境部署</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p> Nginx 是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下 Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。<br> Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进行服务。 Nginx 采用 C 进行编写，不论是系统资源开销还是 CPU 使用效率都比 Perlbal 要好很多。<br> Nginx 同时也是一个非常优秀的邮件代理服务器，最早开发这个产品的目的之一也是作为邮件代理服务器。 Nginx 是一个安装非常简单，配置文件非常简洁（还能够支持perl语法）， bug 非常少的服务器， 启动特别容易，并且几乎可以做到 7*24 不间断运行，即使运行数个月也不需要重新启动。 你还能够在不间断服务的情况下进行软件版本的升级。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>Nginx需要依赖下面3个包：  </p>
+<ol>
+<li>gzip模块需要zlib库  </li>
+<li>rewrite模块需要pcre库  </li>
+<li>ssl功能需要openssl库<br>依赖包安装顺序依次为：openssl、zlib、pcre，最后安装Nginx包。</li>
+</ol>
+<h2 id="1-下载依赖包"><a href="#1-下载依赖包" class="headerlink" title="1. 下载依赖包"></a>1. 下载依赖包</h2><p>openssl-fips-2.0.2.tar.gz<br>zlib-1.2.7.tar.gz<br>pcre-8.21.tar.gz<br>nginx-1.2.6.tar.gz  </p>
+<h2 id="2-安装依赖包"><a href="#2-安装依赖包" class="headerlink" title="2. 安装依赖包"></a>2. 安装依赖包</h2><p>①. 安装openssl  </p>
+<pre>[root@localhost mrms]# tar -zxvf openssl-fips-2.0.2.tar.gz
+[root@localhost mrms]# cd openssl-fips-2.0.2
+[root@localhost openssl-fips-2.0.2]# ./config
+[root@localhost openssl-fips-2.0.2]# make
+[root@localhost openssl-fips-2.0.2]# make install  </pre>
+
+<p>②.安装zlib</p>
+<pre>[root@localhost mrms]# tar -zxvf zlib-1.2.7.tar.gz  
+[root@localhost mrms]# cd zlib-1.2.7  
+[root@localhost zlib-1.2.7]# ./configure  
+[root@localhost zlib-1.2.7]# make  
+[root@localhost zlib-1.2.7]# make install</pre>
+
+<p>③.安装pcre      </p>
+<pre>[root@localhost mrms]# tar -zxvf pcre-8.21.tar.gz  
+[root@localhost mrms]# cd pcre-8.21  
+[root@localhost pcre-8.21]# ./configure  
+[root@localhost pcre-8.21]# make  
+[root@localhost pcre-8.21]# make install</pre> 
+
+<p> ④.安装nginx    </p>
+<pre>[root@localhost mrms]# tar -zxvf nginx-1.2.6.tar.gz  
+[root@localhost mrms]# cd nginx-1.2.6  
+[root@localhost nginx-1.2.6]# ./configure --prefix=/iflytek/nginx --with-pcre=../pcre-8.21 --with-zlib=../zlib-1.2.7 --with-openssl=../openssl-fips-2.0.2  
+[root@localhost nginx-1.2.6]# make  
+[root@localhost nginx-1.2.6]# make install</pre> 
+
+<p>至此Nginx的安装完成！</p>
+<h2 id="3-检测是否安装成功"><a href="#3-检测是否安装成功" class="headerlink" title="3. 检测是否安装成功"></a>3. 检测是否安装成功</h2><pre>[root@localhost nginx-1.2.6]# cd /usr/local/nginx/sbin  
+[root@localhost sbin]# ./nginx –t</pre>
+
+<p>出现如下所示提示，表示安装成功：</p>
+<p><img src="https://i.imgur.com/TwcTxut.jpg" alt=""></p>
+<h2 id="4-启动关闭"><a href="#4-启动关闭" class="headerlink" title="4. 启动关闭"></a>4. 启动关闭</h2><p>启动：    </p>
+<pre>./sbin/nginx -c conf/nginx.conf</pre>   
+关闭：    
+<pre>./sbin/nginx -s stop</pre>  
+重置：    
+当你有修改配置文件的时候，只需要reload一下即可    
+<pre>./sbin/nginx -s reload</pre>
+
+<p>在浏览器中输入：<a href="http://ip" target="_blank" rel="noopener">http://ip</a> 出现如下页面说明启动成功<br><img src="https://i.imgur.com/mVVuvjC.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/Linux系统Nginx的安装 - 副本/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="貓熊">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="貓熊的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/Linux系统Nginx的安装 - 副本/" itemprop="url">
+                  Linux系统Nginx的安装
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-11 10:45:23 / 修改时间：10:01:15" itemprop="dateCreated datePublished" datetime="2018-05-11T10:45:23+08:00">2018-05-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/环境部署/" itemprop="url" rel="index"><span itemprop="name">环境部署</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p> Nginx 是一个高性能的 HTTP 和反向代理服务器，也是一个 IMAP/POP3/SMTP 代理服务器，在高连接并发的情况下 Nginx 是 Apache 服务器不错的替代品.其特点是占有内存少，并发能力强，事实上nginx的并发能力确实在同类型的网页服务器中表现较好。<br> Nginx 既可以在内部直接支持 Rails 和 PHP 程序对外进行服务，也可以支持作为 HTTP 代理服务器对外进行服务。 Nginx 采用 C 进行编写，不论是系统资源开销还是 CPU 使用效率都比 Perlbal 要好很多。<br> Nginx 同时也是一个非常优秀的邮件代理服务器，最早开发这个产品的目的之一也是作为邮件代理服务器。 Nginx 是一个安装非常简单，配置文件非常简洁（还能够支持perl语法）， bug 非常少的服务器， 启动特别容易，并且几乎可以做到 7*24 不间断运行，即使运行数个月也不需要重新启动。 你还能够在不间断服务的情况下进行软件版本的升级。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>Nginx需要依赖下面3个包：  </p>
+<ol>
+<li>gzip模块需要zlib库  </li>
+<li>rewrite模块需要pcre库  </li>
+<li>ssl功能需要openssl库<br>依赖包安装顺序依次为：openssl、zlib、pcre，最后安装Nginx包。</li>
+</ol>
+<h2 id="1-下载依赖包"><a href="#1-下载依赖包" class="headerlink" title="1. 下载依赖包"></a>1. 下载依赖包</h2><p>openssl-fips-2.0.2.tar.gz<br>zlib-1.2.7.tar.gz<br>pcre-8.21.tar.gz<br>nginx-1.2.6.tar.gz  </p>
+<h2 id="2-安装依赖包"><a href="#2-安装依赖包" class="headerlink" title="2. 安装依赖包"></a>2. 安装依赖包</h2><p>①. 安装openssl  </p>
+<pre>[root@localhost mrms]# tar -zxvf openssl-fips-2.0.2.tar.gz
+[root@localhost mrms]# cd openssl-fips-2.0.2
+[root@localhost openssl-fips-2.0.2]# ./config
+[root@localhost openssl-fips-2.0.2]# make
+[root@localhost openssl-fips-2.0.2]# make install  </pre>
+
+<p>②.安装zlib</p>
+<pre>[root@localhost mrms]# tar -zxvf zlib-1.2.7.tar.gz  
+[root@localhost mrms]# cd zlib-1.2.7  
+[root@localhost zlib-1.2.7]# ./configure  
+[root@localhost zlib-1.2.7]# make  
+[root@localhost zlib-1.2.7]# make install</pre>
+
+<p>③.安装pcre      </p>
+<pre>[root@localhost mrms]# tar -zxvf pcre-8.21.tar.gz  
+[root@localhost mrms]# cd pcre-8.21  
+[root@localhost pcre-8.21]# ./configure  
+[root@localhost pcre-8.21]# make  
+[root@localhost pcre-8.21]# make install</pre> 
+
+<p> ④.安装nginx    </p>
+<pre>[root@localhost mrms]# tar -zxvf nginx-1.2.6.tar.gz  
+[root@localhost mrms]# cd nginx-1.2.6  
+[root@localhost nginx-1.2.6]# ./configure --prefix=/iflytek/nginx --with-pcre=../pcre-8.21 --with-zlib=../zlib-1.2.7 --with-openssl=../openssl-fips-2.0.2  
+[root@localhost nginx-1.2.6]# make  
+[root@localhost nginx-1.2.6]# make install</pre> 
+
+<p>至此Nginx的安装完成！</p>
+<h2 id="3-检测是否安装成功"><a href="#3-检测是否安装成功" class="headerlink" title="3. 检测是否安装成功"></a>3. 检测是否安装成功</h2><pre>[root@localhost nginx-1.2.6]# cd /usr/local/nginx/sbin  
+[root@localhost sbin]# ./nginx –t</pre>
+
+<p>出现如下所示提示，表示安装成功：</p>
+<p><img src="https://i.imgur.com/TwcTxut.jpg" alt=""></p>
+<h2 id="4-启动关闭"><a href="#4-启动关闭" class="headerlink" title="4. 启动关闭"></a>4. 启动关闭</h2><p>启动：    </p>
+<pre>./sbin/nginx -c conf/nginx.conf</pre>   
+关闭：    
+<pre>./sbin/nginx -s stop</pre>  
+重置：    
+当你有修改配置文件的时候，只需要reload一下即可    
+<pre>./sbin/nginx -s reload</pre>
+
+<p>在浏览器中输入：<a href="http://ip" target="_blank" rel="noopener">http://ip</a> 出现如下页面说明启动成功<br><img src="https://i.imgur.com/mVVuvjC.png" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/数据库exp无法导出空表的解决方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1185,7 +2385,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1298,7 +2498,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">3k</span>
+    <span title="站点总字数">13k</span>
   
 
   
@@ -1307,7 +2507,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">3 分钟</span>
+    <span title="站点阅读时长">12 分钟</span>
   
 </div>
 
@@ -1336,7 +2536,7 @@
 
 <!-- <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.2k字</span>
+  <span class="post-count">博客全站共4.7k字</span>
 </div> -->
         
 
