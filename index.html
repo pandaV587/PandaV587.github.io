@@ -618,7 +618,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-05-09 18:10:52" itemprop="dateModified" datetime="2018-05-09T18:10:52+08:00">2018-05-09</time>
+                <time title="修改时间：2018-05-11 09:41:55" itemprop="dateModified" datetime="2018-05-11T09:41:55+08:00">2018-05-11</time>
               
             
           </span>
@@ -663,7 +663,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">571</span>
+                <span title="本文字数">572</span>
               
 
               
@@ -702,7 +702,8 @@
             <h1 id="1-全局替换"><a href="#1-全局替换" class="headerlink" title="1. 全局替换"></a>1. 全局替换</h1><p>root用户下，修改全局变量直接参考以下方法：<br><a href="https://zhidao.baidu.com/question/16233157.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/16233157.html</a></p>
 <h1 id="2-局部替换"><a href="#2-局部替换" class="headerlink" title="2. 局部替换"></a>2. 局部替换</h1><p>当同一服务器有多个用户，需要不同的JDK版本时，需要修改局部变量（只对当前登录的用户生效）<br>1）、安装对应的JDK版本；<br>2）、修改局部变量配置文件：</p>
 <p><pre>vim .bash_profile</pre><br>添加以下内容：</p>
-<p><pre>export JAVA_HOME=/usr/java/jdk1.7.0_80<br>PATH=$PATH:$HOME/bin:${JAVA_HOME}/bin<br>export PATH</pre><br>3）、使配置文件生效：<br>source .bash_profile<br>4）、查看JDK版本：</p>
+<p><pre>export JAVA_HOME=/usr/java/jdk1.7.0_80<br>PATH=$PATH:$HOME/bin:${JAVA_HOME}/bin<br>export PATH</pre><br>3）、使配置文件生效：</p>
+<p><pre>source .bash_profile</pre><br>4）、查看JDK版本：</p>
 <p><pre>java -version</pre><br>若跟配置的版本一致，则替换正确；<br>若跟配置的版本不一致，则再次修改局部变量配置文件：</p>
 <p><pre>vim .bash_profile</pre><br>PATH使用绝对路径：</p>
 <p><pre>PATH=/usr/lib64/qt-3.3/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/jzfw/bin:/usr/java/jdk1.7.0_80/bin:/home/jzfw/bin</pre></p>
