@@ -373,7 +373,9 @@
 
   
     <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjY4OC8xMzIyMw=="></div>
+      
+        <div id="gitment-container"></div>
+      
     </div>
 
   
@@ -675,7 +677,6 @@
   <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
 
 
-
   
   
 
@@ -716,21 +717,47 @@
 
 
   
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
-  
 
 
 
 
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'pandaV587# MUST HAVE, Your Github Username',
+            repo: 'pandaV587# MUST HAVE, The name of the repo you use to store Gitment comments',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'a2c4b8f33b020e47945fb052410256e01da45195# EITHER this or proxy_gateway, Github access secret token for the Gitment',
+            
+                client_id: '5717b001e95f783c7d57# MUST HAVE, Github client id for the Gitment'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
